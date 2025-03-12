@@ -1,0 +1,123 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f0;
+    padding-top: 100px;
+}
+
+header {
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    color: white; 
+    text-align: center;
+    z-index: 1000; 
+  }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 0px 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #797878;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 30px;
+}
+
+.menu li a:hover{
+    color: #619b51;
+    text-decoration:none;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+
+
+.menu li a.active {
+    color: #619b51;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+
+.cotacao {
+    
+    padding: 0px 10px;
+    
+}
+.orcamento{
+    background-color: #619b51;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.orcamento:hover{
+    background-color: #79664A;
+    color: #5bde36;
+    text-decoration: none;
+}
+
+main{
+    background-color: rgb(255, 255, 255);
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.200);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px ;
+    
+
+}
+section#redes-sociais img{
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.414);
+    box-sizing: border-box;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    margin-right: 10px;
+}
+aside{
+    color: rgb(80, 77, 77);
+    background-color:#95F4FF ;
+    border-radius: 10px;
+}
+aside > h2{
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color:#414141a4 ;
+    color: rgb(0, 0, 0);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.20);
+}

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+  <title>Recanto Andrade</title>
+  <style>
+    /* Cores principais */
+    :root {
+      --primary-green: #2E7D32;
+      --secondary-green: #4CAF50;
+      --light-green: #A5D6A7;
+      --primary-brown: #5D4037;
+      --secondary-brown: #8D6E63;
+      --light-brown: #D7CCC8;
+      --white: #FFFFFF;
+      --black: #212121;
+      --gray: #757575;
+      --light-gray: #F5F5F5;
+    }
+    
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light-gray);
+      color: var(--black);
+      line-height: 1.6;
+    }
+    
+    /* Header e Navegação */
+    header {
+      background-color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      background-color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo-icon svg {
+      width: 25px;
+      height: 25px;
+      fill: var(--primary-green);
+    }
+    
+    .menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .menu li {
+      margin-left: 1.5rem;
+    }
+    
+    .menu a {
+      color: green;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .menu a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: green;
+      transition: width 0.3s ease-out;
+    }
+    
+    .menu a:hover::before {
+      width: 100%;
+    }
+    
+    .reserva-btn {
+      background-color: var(--primary-brown);
+      color: var(--white);
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .reserva-btn:hover {
+      background-color: var(--secondary-brown);
+    }
+    
+    /* Banner Principal */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-btn {
+      background-color: var(--primary-green);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+    
+    .hero-btn:hover {
+      background-color: var(--secondary-green);
+    }
+    
+    /* Seções Gerais */
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-green);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background-color: var(--primary-brown);
+    }
+    
+    /* Seção Quem Somos */
+    .quem-somos {
+      background-color: var(--white);
+    }
+    
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .card {
+      background-color: var(--light-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      width: 320px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .card-img {
+      height: 200px;
+      background-color: var(--light-green);
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+    }
+    
+    .card-content h3 {
+      color: var(--primary-brown);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .card-content p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    /* Seção Hospedagens */
+    .hospedagens {
+      background-color: var(--light-brown);
+    }
+    
+    .slider-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+      min-width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: var(--white);
+    }
+    
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--light-green);
+      margin: 0 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .slider-dot.active {
+      background-color: var(--primary-green);
+    }
+    
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.7);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 10;
+      border: none;
+      transition: background-color 0.3s;
+    }
+    
+    .slider-btn:hover {
+      background-color: rgba(255,255,255,0.9);
+    }
+    
+    .prev-btn {
+      left: 10px;
+    }
+    
+    .next-btn {
+      right: 10px;
+    }
+    
+    /* Seção Localização */
+    .localizacao {
+      background-color: var(--white);
+    }
+    
+    .map-container {
+      height: 400px;
+      background-color: var(--light-gray);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    
+    .map-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .endereco {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--light-green);
+      border-radius: 10px;
+    }
+    
+    .endereco p {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-brown);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .footer-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--light-green);
+    }
+    
+    .contact-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 1.5rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--secondary-brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary-green);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    #zap{
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all ease 0.2s;
+}
+#zap:hover{
+
+    width: 65px;
+    height: 65px;
+    transition: all ease 0.2s;
+}
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        width: 100%;
+        max-width: 320px;
+      }
+      
+      .footer-column {
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header com menu -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          
+          <img src="imagens/logo.png" alt="logo">
+        </a>
+        <ul class="menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#quem-somos">Sobre Nós</a></li>
+          <li><a href="#hospedagens">Hospedagens</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <button class="reserva-btn">Faça sua Reserva</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Seção Banner -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Bem-vindo ao Recanto Andrade</h1>
+      </p>"Seu momento de lazer merece o melhor: um espaço alugável com piscina e churrasqueira para celebrar a vida do jeito certo!</p>
+      <a href="#" class="hero-btn">Conheça nossas acomodações</a>
+    </div>
+  </section>
+
+  <!-- Seção Quem Somos -->
+  <section class="quem-somos" id="quem-somos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quem Somos</h2>
+      </div>
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-img" style="background-image: url('/api/placeholder/320/200');"></div>
+          <div class="card-content">
+            <h3>Psicina</h3>
+            <p>Fundada em 2005 pela família Silva, a Pousada Verde nasceu do sonho de criar um espaço que unisse conforto e natureza. Ao longo dos anos, nos tornamos referência em hospitalidade na região.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" style="background-image: url('imagens/logo-github.jpg');"></div>
+          <div class="card-content">
+            <h3>Eletrônicos</h3>
+            <p>Proporcionar experiências memoráveis aos nossos hóspedes, combinando conforto, sustentabilidade e atendimento personalizado em um ambiente natural privilegiado.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img" style="background-image: url('/api/placeholder/320/200');"></div>
+          <div class="card-content">
+            <h3>Quartos</h3>
+            <p>Acreditamos na hospitalidade autêntica, no respeito à natureza e na valorização da cultura local. Trabalhamos para criar conexões significativas entre as pessoas e o ambiente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Hospedagens -->
+  <section class="hospedagens" id="hospedagens">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossas Hospedagens</h2>
+      </div>
+      <div class="slider-container">
+        <button class="slider-btn prev-btn">❮</button>
+        <div class="slider">
+          <div class="slide" style="background-image: url('imagens/logo-youtube.jpg');">
+            <div class="slide-content">
+              <h3>Chalé Montanha</h3>
+              <p>Acomodação aconchegante com vista para as montanhas, lareira e varanda privativa.</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('imagens/logo-home.jpg');">
+            <div class="slide-content">
+              <h3>Suíte Bosque</h3>
+              <p>Amplo espaço com decoração rústica, banheira de hidromassagem e vista para o bosque.</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('imagens/logo-github.jpg');">
+            <div class="slide-content">
+              <h3>Cabana Lago</h3>
+              <p>Experiência única com deck privativo sobre o lago e interiores aconchegantes.</p>
+            </div>
+          </div>
+        </div>
+        <button class="slider-btn next-btn">❯</button>
+        <div class="slider-nav">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Localização Section -->
+  <section id="localizacao" class="localizacao">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossa Localização</h2>
+      </div>
+      <div class="map-container">
+        <img src="/api/placeholder/1200/400" alt="Mapa de Localização">
+      </div>
+      <div class="endereco">
+        <p><strong>Estrada da Serra, km 15</strong></p>
+        <p>Vale das Águas - Montanha Verde - SP</p>
+        <p>CEP: 12345-000</p>
+        <p><strong>Como Chegar:</strong> A 120km da capital, com fácil acesso pela Rodovia dos Verdes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-title">Nossos Contatos</h3>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>
+              <p>(11) 4567-8900</p>
+              <p>(11) 91234-5678</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <p>contato@greenresort.com.br</p>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">⏰</span>
+            <div>
+              <p>Check-in: 14h00</p>
+              <p>Check-out: 12h00</p>
+              <p>Recepção: 24 horas</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Links Rápidos</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem;"><a href="#inicio" style="color: var(--light-green); text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#quem-somos" style="color: var(--light-green); text-decoration: none;">Sobre Nós</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#hospedagens" style="color: var(--light-green); text-decoration: none;">Hospedagens</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#localizacao" style="color: var(--light-green); text-decoration: none;">Localização</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--light-green); text-decoration: none;">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title">Siga a gente nas redes sociais</h3>
+          <p>Acompanhe nossas redes sociais e fique por dentro das novidades, promoções e eventos especiais.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon">FB</a>
+            <a href="#" class="social-icon">IG</a>
+            <a href="#" class="social-icon">TW</a>
+            <a href="#" class="social-icon">YT</a>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <p style="margin-bottom: 0.5rem;">Inscreva-se em nossa newsletter:</p>
+            <div style="display: flex;">
+              <input type="email" placeholder="Seu e-mail" style="flex: 1; padding: 0.7rem; border: none; border-radius: 4px 0 0 4px;">
+              <button style="background-color: var(--secondary-green); color: white; border: none; padding: 0 1rem; border-radius: 0 4px 4px 0; cursor: pointer;">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Green Resort. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <a href="https://wa.me/5511956914632" class="whatsapp-button" target="_blank">
+    <i class="fab fa-whatsapp" id="zap"></i>
+</a>
+
+  <!-- Scripts -->
+  <script>
+    // Script para o slider de imagens
+   // Script para o slider de imagens
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slider-dot');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+let slideIndex = 0;
+const slideCount = slides.length;
+
+// Função para atualizar a posição do slider
+function updateSlider() {
+  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+  
+  // Atualiza os dots (indicadores)
+  dots.forEach((dot, index) => {
+    if (index === slideIndex) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+
+// Event listener para o botão anterior
+prevBtn.addEventListener('click', function() {
+  slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+  updateSlider();
+});
+
+// Event listener para o botão próximo
+nextBtn.addEventListener('click', function() {
+  slideIndex = (slideIndex + 1) % slideCount;
+  updateSlider();
+});
+
+// Event listeners para os dots (indicadores)
+dots.forEach(function(dot, index) {
+  dot.addEventListener('click', function() {
+    slideIndex = index;
+    updateSlider();
+  });
+});
+
+// Inicializa o slider
+updateSlider();
+  </script>
+</body>
+</html>
