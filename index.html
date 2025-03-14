@@ -66,6 +66,10 @@
       display: flex;
       align-items: center;
     }
+    .logo-img {
+  width: auto;
+  max-height: 50px; 
+}
     
     .logo-icon {
       width: 40px;
@@ -469,31 +473,33 @@
     
     /* Responsividade */
     @media (max-width: 768px) {
-      .menu {
-        display: none;
-      }
-      .hero{
-
-     
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
-      
-      .card {
-        width: 100%;
-        max-width: 320px;
-      }
-      
-      .footer-column {
-        flex: 100%;
-      }
-    }
+  .logo-img {
+    width: auto;
+    max-height: 30px; /* Tamanho ajustado para mobile */
   }
+  
+  .menu {
+    display: none;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .footer-column {
+    flex: 100%;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -502,8 +508,7 @@
     <div class="container">
       <nav>
         <a href="#" class="logo">
-          
-          <img src="imagens/logo.png" alt="logo">
+          <img src="imagens/logo.png" alt="logo" class="logo-img">
         </a>
         <ul class="menu">
           <li><a href="#inicio">Início</a></li>
@@ -531,14 +536,14 @@
     <div class="container">
       <div class="section-title">
         <h2>Quem Somos</h2>
-        <p>O Espaço Recanto Andrade foi criado em 2022 pela Família Andrade, pensado inicialmente para proporcionar momentos especiais à nossa própria família, o que torna cada cantinho único e acolhedor. Hoje, abrimos nossas portas para receber todas as famílias que valorizam bons momentos ao lado de quem amam.</p>
+        <p>Somos o Espaço Recanto Andrade, um lugar criado para celebrar bons momentos em família, onde cada detalhe foi pensado para transformar encontros em memórias especiais.</p>
       </div>
       <div class="cards-container">
         <div class="card">
           <div class="card-img" style="background-image: url('imagens/casa.jpeg'); background-position:center center; "></div>
           <div class="card-content">
             <h3>Nossa História</h3>
-            <p>O Espaço Recanto Andrade conta com piscina, churrasqueira, utensílios domésticos, quartos aconchegantes, TV a cabo, internet e toda a estrutura para momentos especiais em família.</p>
+            <p>O Espaço Recanto Andrade foi criado em 2022 pela Família Andrade, pensado inicialmente para proporcionar momentos especiais à nossa própria família, o que torna cada cantinho único e acolhedor. Hoje, abrimos nossas portas para receber todas as famílias que valorizam bons momentos ao lado de quem amam..</p>
           </div>
         </div>
         <div class="card">
