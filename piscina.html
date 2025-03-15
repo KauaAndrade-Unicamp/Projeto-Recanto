@@ -540,7 +540,7 @@
   }
   
   .gallery-title h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   
   .gallery-grid {
@@ -585,21 +585,18 @@
   }
   
   .gallery-filters {
-    flex-direction: row; /* Keep as row instead of column */
-    flex-wrap: wrap; /* Allow items to wrap if needed */
-    justify-content: center;
-    gap: 8px; /* Even spacing between buttons */
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Space between buttons */
   }
   
   .filter-btn {
-    width: auto; /* Let the content determine width */
-    min-width: 110px; /* Set a minimum width for consistency */
-    margin-bottom: 0; /* Remove bottom margin */
-    padding: 0.5rem 0.8rem; /* Smaller padding for mobile */
-    font-size: 0.9rem; /* Slightly smaller font */
-    white-space: nowrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Add ellipsis if text is too long */
-    overflow: hidden; /* Hide overflow */
+    width: 80%; /* Consistent width */
+    max-width: 250px; /* Maximum width */
+    margin: 0; /* Remove any default margins */
+    padding: 0.7rem 1rem; /* Keep decent padding */
+    text-align: center; /* Center text */
+    white-space: normal; /* Allow text to wrap if needed */
   }
   
   .slide-caption h3 {
