@@ -594,9 +594,12 @@
     width: 80%; /* Consistent width */
     max-width: 250px; /* Maximum width */
     margin: 0; /* Remove any default margins */
-    padding: 0.7rem 1rem; /* Keep decent padding */
+    padding: 0.7rem 0; /* Vertical padding only */
     text-align: center; /* Center text */
     white-space: normal; /* Allow text to wrap if needed */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
   }
   
   .slide-caption h3 {
