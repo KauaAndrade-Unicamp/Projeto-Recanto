@@ -7,7 +7,6 @@
   <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
   <title>Recanto Andrade</title>
   <style>
-    /* Cores principais */
     :root {
       --primary-green: #5D4037;
       --secondary-green: #4CAF50;
@@ -67,9 +66,9 @@
       align-items: center;
     }
     .logo-img {
-  width: auto;
-  max-height: 80px; 
-}
+      width: auto;
+      max-height: 80px; 
+    }
     
     .logo-icon {
       width: 40px;
@@ -206,25 +205,35 @@
       background-color: var(--primary-brown);
     }
     
-    /* Seção Quem Somos */
+    /* Seção Quem Somos - AJUSTADO PARA 4 CARDS ALINHADOS */
     .quem-somos {
       background-color: var(--white);
     }
     
     .cards-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Para telas médias */
+    @media (max-width: 1200px) and (min-width: 768px) {
+      .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     .card {
       background-color: var(--light-gray);
       border-radius: 8px;
       overflow: hidden;
-      width: 320px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     
     .card:hover {
@@ -240,6 +249,9 @@
     
     .card-content {
       padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
     
     .card-content h3 {
@@ -251,6 +263,7 @@
     .card-content p {
       color: var(--gray);
       margin-bottom: 1rem;
+      flex-grow: 1;
     }
     
     /* Seção Hospedagens */
@@ -271,15 +284,15 @@
     }
     
     .slide {
-  min-width: 100%;
-  height: 400px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-}
+      min-width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
     
     .slide-content {
       position: absolute;
@@ -371,83 +384,87 @@
       margin-bottom: 0.5rem;
     }
     
-    /* Footer */
+    
     footer {
-      background-color: var(--primary-brown);
-      color: var(--white);
-      padding: 4rem 0 2rem;
-    }
-    
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 3rem;
-    }
-    
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-    }
-    
-    .footer-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 10px;
-    }
-    
-    .footer-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: var(--light-green);
-    }
-    
-    .contact-item {
-      display: flex;
-      margin-bottom: 1.5rem;
-    }
-    
-    .contact-icon {
-      margin-right: 1rem;
-      font-size: 1.5rem;
-    }
-    
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 1.5rem;
-    }
-    
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--secondary-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: var(--white);
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-    
-    .social-icon:hover {
-      background-color: rgb(255, 255, 255);
-      color:var(--primary-brown);
-    }
-    
-    .copyright {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
+  background-color: var(--primary-brown);
+  color: var(--white);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+  height: 60px; /* Altura fixa para alinhar todos os títulos */
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--light-green);
+}
+
+.contact-item {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 1.5rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--secondary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: rgb(255, 255, 255);
+  color: var(--primary-brown);
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
     #zap{
     position: fixed;
     bottom: 90px;
@@ -463,45 +480,50 @@
     font-size: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: all ease 0.2s;
-}
-#zap:hover{
-
+    }
+    #zap:hover{
     width: 65px;
     height: 65px;
     transition: all ease 0.2s;
-}
+    }
     
     /* Responsividade */
     @media (max-width: 768px) {
-  .logo-img {
-    width: auto;
-    max-height: 50px; /* Tamanho ajustado para mobile */
-  }
-  
-  .menu {
-    display: none;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .section-title h2 {
-    font-size: 2rem;
-  }
-  
-  .card {
-    width: 100%;
-    max-width: 320px;
+      .logo-img {
+        width: auto;
+        max-height: 50px; /* Tamanho ajustado para mobile */
+      }
+      
+      .menu {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+    flex-direction: column;
   }
   
   .footer-column {
-    flex: 100%;
+    width: 100%;
+  }
+  
+  .footer-title {
+    height: auto;
   }
 }
-
+    
   </style>
-</head>
 <body>
   <!-- Header com menu -->
   <header>
@@ -513,7 +535,7 @@
         <ul class="menu">
           <li><a href="#inicio">Início</a></li>
           <li><a href="#quem-somos">Sobre Nós</a></li>
-          <li><a href="#hospedagens">Hospedagens</a></li>
+          <li><a href="#hospedagens">Nossas Instalações</a></li>
           <li><a href="galeria.html">Galeria</a></li>
           <li><a href="#localizacao">Localização</a></li>
           <li><a href="#contato">Contato</a></li>
@@ -550,19 +572,27 @@
         <div class="card">
           <div class="card-img" style="background-image: url('imagens/eletronicos.jpeg');"></div>
           <div class="card-content">
-            <h3>Nossas Instalações</h3>
-            <p>O Espaço Recanto Andrade conta com piscina, churrasqueira, utensílios domésticos, quartos aconchegantes, TV a cabo, internet e toda a estrutura para momentos especiais em família.</p>
+            <h3>Visão</h3>
+            <p>Ser referência em hospitalidade, oferecendo um espaço acolhedor e bem estruturado para que famílias criem memórias inesquecíveis em um ambiente de conforto e harmonia.</p>
           </div>
         </div>
         <a href="galeria.html" style="text-decoration: none;">
           <div class="card">
             <div class="card-img" style="background-image: url('imagens/quarto.jpeg');"></div>
             <div class="card-content">
-              <h3>Galeria</h3>
-              <p>Acreditamos na hospitalidade autêntica, no respeito à natureza e na valorização da cultura local. Trabalhamos para criar conexões significativas entre as pessoas e o ambiente.</p>
+              <h3>Missão</h3>
+              <p>
+              Proporcionar experiências únicas e momentos especiais para famílias, oferecendo um espaço cuidadosamente planejado, onde cada detalhe valoriza o convívio, o bem-estar e a alegria de estar junto.</p>
             </div>
           </div>
         </a>
+        <div class="card">
+          <div class="card-img" style="background-image: url('imagens/eletronicos.jpeg');"></div>
+          <div class="card-content">
+            <h3>Valores</h3>
+            <p>Nossos valores estão fundamentados na importância da família, na hospitalidade acolhedora, na qualidade de cada detalhe, no respeito a cada cliente e no compromisso de proporcionar experiências memoráveis em um ambiente seguro, confortável e pensado para celebrar bons momentos.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -571,7 +601,9 @@
   <section class="hospedagens" id="hospedagens">
     <div class="container">
       <div class="section-title">
-        <h2>Nosso Espaço</h2>
+        <h2>Nossas Instalações</h2>
+        <p>O Espaço Recanto Andrade conta com piscina, churrasqueira, utensílios domésticos, quartos aconchegantes, TV a cabo, internet e toda a estrutura para momentos especiais em família</p>
+        <p>Para conhecer um pouco mais de nossas instalações: <a href="galeria.html">clique aqui</a></p>
       </div>
       <div class="slider-container">
         <button class="slider-btn prev-btn">❮</button>
@@ -579,19 +611,19 @@
           <div class="slide" style="background-image: url('imagens/churrasqueira.png');">
             <div class="slide-content">
               <h3>Churrasqueira</h3>
-              <p>Uma churrasqueira grande, bonita e eficiente, daquelas que fazem o churrasco quase se preparar sozinho! Espaçosa o suficiente para acomodar todos os cortes e ainda impressionar os convidados, porque aqui o churrasco é garantido e o charme é por conta da casa</p>
+              
             </div>
           </div>
           <div class="slide" style="background-image: url('imagens/piscina.jpeg'); background-position: left top;">
             <div class="slide-content">
               <h3>Piscina</h3>
-              <p>Piscina limpinha, com cascata e segura – feita pra mergulhar sem medo e sair só quando bater a fome</p>
+              
             </div>
           </div>
           <div class="slide" style="background-image: url('imagens/quintal.jpeg'); background-size: cover; background-position: center center;">
             <div class="slide-content">
               <h3>Quintal</h3>
-              <p>Quintal espaçoso, do jeito que a turma gosta! Cabe mesa, cadeira e até aquela conversa que vai noite adentro – porque aqui, espaço pra bons momentos nunca falta!</p>
+              
             </div>
           </div>
         </div>
@@ -603,6 +635,7 @@
         </div>
       </div>
     </div>
+    
   </section>
 
   <!-- Localização Section -->
@@ -615,7 +648,7 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.047549572176!2d-50.4913831250809!3d-21.932723403786046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9495b8720c7e9b75%3A0xca78a1bb7dc823dd!2sR.%20Francisco%20Gomes%20Pato%2C%20285%20-%20Jardim%20Itaipu%2C%20Tup%C3%A3%20-%20SP%2C%2017602-495!5e0!3m2!1spt-BR!2sbr!4v1741814864158!5m2!1spt-BR!2sbr" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="endereco">
-        <p><strong>Rua Francisgo Gomes Pato, 285, Jardim Apoema</strong></p>
+        <p><strong>Rua Francisco Gomes Pato, 285, Jardim Apoema</strong></p>
         <p>Tupã-SP</p>
         <p>CEP: 17602-495</p>
         <p><strong>Como Chegar:</strong> Próximo ao Parque do atleta, nas proximidades da Cohab Nem</p>
@@ -624,58 +657,52 @@
   </section>
 
   <!-- Footer -->
-  <footer id="contato">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3 class="footer-title">Nossos Contatos</h3>
-          <div class="contact-item">
-            <span class="contact-icon">📞</span>
-            <div>
-              <p>(14) 98111-1872</p>
-              <p>(14) 99897-0101</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">✉️</span>
-            <p>andre.s.andrade@hotmail.com</p>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">⏰</span>
-            <div>
-              <p>Check-in: </p>
-              <p>Check-out: </p>
-              <p>Recepção: 24 horas</p>
-            </div>
+  <!-- Footer -->
+<footer id="contato">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3 class="footer-title">Nossos Contatos</h3>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <p>14 99714-9114</p>
+            <p>(14) 98111-1872</p>
+            <p>(14) 99897-0101</p>
           </div>
         </div>
-        <div class="footer-column">
-          <h3 class="footer-title">Links Rápidos</h3>
-          <ul style="list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 0.5rem;"><a href="#inicio" style="color: var(--light-green); text-decoration: none;">Início</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="#quem-somos" style="color: var(--light-green); text-decoration: none;">Sobre Nós</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="#hospedagens" style="color: var(--light-green); text-decoration: none;">Hospedagens</a></li>
-            <li style="margin-bottom: 0.5rem;"><a href="#localizacao" style="color: var(--light-green); text-decoration: none;">Localização</a></li>
-            
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3 class="footer-title">Siga a gente nas redes sociais</h3>
-          <p>Acompanhe nossas redes sociais e fique por dentro das novidades, promoções e eventos especiais.</p>
-          <div class="social-icons">
-           
-            <a href="https://www.instagram.com/espacoo.andradee_/#" class="social-icon" target="_blank">IG</a>
-          </div>
-          
+        <div class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <p>andre.s.andrade@hotmail.com</p>
         </div>
       </div>
-      <div class="copyright">
-        <p>&copy; 2025 Recanto Andrade. Todos os direitos reservados.</p>
+      
+      <div class="footer-column">
+        <h3 class="footer-title">Links Rápidos</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 0.5rem;"><a href="#inicio" style="color: var(--light-green); text-decoration: none;">Início</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#quem-somos" style="color: var(--light-green); text-decoration: none;">Sobre Nós</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#hospedagens" style="color: var(--light-green); text-decoration: none;">Nossas Instalações</a></li>
+          <li style="margin-bottom: 0.5rem;"><a href="#localizacao" style="color: var(--light-green); text-decoration: none;">Localização</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3 class="footer-title">Siga a gente nas redes sociais</h3>
+        <p>Acompanhe nossas redes sociais e fique por dentro das novidades, promoções e eventos especiais.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/espacoo.andradee_/#" class="social-icon" target="_blank">IG</a>
+        </div>
       </div>
     </div>
-  </footer>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Recanto Andrade. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
   
-  <a href="https://wa.me/5514998500342" class="whatsapp-button" target="_blank">
+  <a href="https://wa.me/5514997149114" class="whatsapp-button" target="_blank">
     <i class="fab fa-whatsapp" id="zap"></i>
 </a>
 
