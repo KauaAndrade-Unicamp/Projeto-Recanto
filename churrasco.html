@@ -585,21 +585,27 @@
   }
   
   .gallery-filters {
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 10px; /* Space between buttons */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
   
   .filter-btn {
-    width: 80%; /* Consistent width */
-    max-width: 250px; /* Maximum width */
-    margin: 0; /* Remove any default margins */
-    padding: 0.7rem 0; /* Vertical padding only */
-    text-align: center; /* Center text */
-    white-space: normal; /* Allow text to wrap if needed */
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    width: 80%;
+    box-sizing: border-box; /* Force including padding in width calculation */
+    padding-left: 15px !important; /* Force left padding */
+    padding-right: 15px !important; /* Force right padding */
+    text-align: center;
+    display: block; /* Use block instead of flex */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Reset any other styles that might interfere */
+  .filter-btn::before,
+  .filter-btn::after {
+    display: none;
   }
   
   .slide-caption h3 {
