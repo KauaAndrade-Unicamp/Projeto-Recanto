@@ -540,16 +540,86 @@
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
+    .menu-mobile-icon {
+      display: none;
+  font-size: 1.8rem;
+  color: var(--primary-brown);
+  cursor: pointer;
+  position: relative;}
+
+.menu-mobile {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 70px; /* Posiciona abaixo do cabeçalho */
+  right: 0;
+  width: 250px;
+  background-color: var(--primary-brown); /* Fundo verde */
+  z-index: 2000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.menu-mobile.active {
+  display: block;
+}
+
+.menu-mobile-close {
+  display: none; 
+}
+
+.menu-mobile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-mobile-links li {
+  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu-mobile-links a {
+  color: var(--white); /* Texto branco */
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: block;
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+}
+
+.menu-mobile-links a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+.menu-mobile-links li:last-child {
+  border-bottom: none;
+}
     /* Responsividade */
 @media (max-width: 768px) {
-  .logo-img {
-    width: auto;
-    max-height: 50px;
-  }
-  
-  .menu {
+  .reserva-btn {
     display: none;
   }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    order: 1; /* Coloca a logo primeiro (esquerda) */
+  }
+      .logo-img {
+        width: auto;
+        max-height: 50px;  /* Tamanho ajustado para mobile */
+      }
+      .menu-mobile-icon {
+        display: block;
+  }
+      .menu {
+        display: none;
+      }
+      
   
   .gallery-title h1 {
     font-size: 1.6rem;
@@ -606,6 +676,8 @@
     max-width: 250px;
   }
   
+  
+  
   .slide-caption h3 {
     font-size: 1rem;
   }
@@ -616,24 +688,46 @@
 }
 </style>
     <!-- Header com menu -->
-<header>
-  <div class="container">
-    <nav>
-      <a href="index.html" class="logo">
-        <img src="imagens/logo.png" alt="logo" class="logo-img">
-      </a>
-      <ul class="menu">
-        <li><a href="index.html#inicio">Início</a></li>
-        <li><a href="index.html#quem-somos">Sobre Nós</a></li>
-        <li><a href="index.html#hospedagens">Nossas Instalações</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="index.html#localizacao">Localização</a></li>
-        <li><a href="index.html#contato">Contato</a></li>
-      </ul>
-      <a href="https://wa.me/5514981111872" target="_blank"><button class="reserva-btn">Faça sua Reserva</button></a>
-    </nav>
-  </div>
-</header>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="#" class="logo">
+            <img src="imagens/logo.png" alt="logo" class="logo-img">
+          </a>
+          <ul class="menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#quem-somos">Sobre Nós</a></li>
+            <li><a href="#hospedagens">Nossas Instalações</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="perguntas-frequentes.html">FAQ</a></li>
+          </ul>
+          <div class="menu-mobile-icon">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="menu-mobile">
+            <ul class="menu-mobile-links">
+              <li><a href="#inicio">Início</a></li>
+              <li><a href="#quem-somos">Sobre Nós</a></li>
+              <li><a href="#hospedagens">Nossas Instalações</a></li>
+              <li><a href="galeria.html">Galeria</a></li>
+              <li><a href="#localizacao">Localização</a></li>
+              <li><a href="#contato">Contato</a></li>
+              <li><a href="perguntas-frequentes.html">FAQ</a></li>
+              <li><a href="https://wa.me/5514981111872" target="_blank">Faça sua Reserva</a></li>
+            </ul>
+          </div>
+          <a href="https://wa.me/5514981111872" target="_blank" class="reserva-btn-container"><button class="reserva-btn">Faça sua Reserva</button></a>
+          
+        </nav>
+        
+        <!-- Adicione isso fora da tag nav, mas ainda dentro do header -->
+        
+        
+      </div>
+    </header>
+    
 
 <!-- Título da Galeria -->
 <div class="gallery-title">
@@ -768,5 +862,60 @@
       // Filtrar imagens com base na categoria
     });
   });
+  // Script para o menu mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const menuIcon = document.querySelector('.menu-mobile-icon');
+  const menuMobile = document.querySelector('.menu-mobile');
   
+  // Toggle do menu ao clicar no ícone
+  if (menuIcon && menuMobile) {
+    menuIcon.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menuMobile.classList.toggle('active');
+      
+      // Alternar ícone (opcional)
+      const iconElement = menuIcon.querySelector('i');
+      if (iconElement) {
+        if (menuMobile.classList.contains('active')) {
+          iconElement.classList.remove('fa-bars');
+          iconElement.classList.add('fa-times');
+        } else {
+          iconElement.classList.remove('fa-times');
+          iconElement.classList.add('fa-bars');
+        }
+      }
+    });
+  }
+  
+  // Fechar o menu ao clicar em um link
+  const menuLinks = document.querySelectorAll('.menu-mobile-links a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuMobile.classList.remove('active');
+      
+      // Restaurar ícone (opcional)
+      const iconElement = menuIcon.querySelector('i');
+      if (iconElement) {
+        iconElement.classList.remove('fa-times');
+        iconElement.classList.add('fa-bars');
+      }
+    });
+  });
+  
+  // Fechar o menu ao clicar fora dele
+  document.addEventListener('click', function(e) {
+    if (menuMobile && menuMobile.classList.contains('active')) {
+      if (!menuMobile.contains(e.target) && e.target !== menuIcon) {
+        menuMobile.classList.remove('active');
+        
+        // Restaurar ícone (opcional)
+        const iconElement = menuIcon.querySelector('i');
+        if (iconElement) {
+          iconElement.classList.remove('fa-times');
+          iconElement.classList.add('fa-bars');
+        }
+      }
+    }
+  });
+});
 </script>

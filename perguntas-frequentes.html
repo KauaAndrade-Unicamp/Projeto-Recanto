@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+  <title>Perguntas Frequentes - Recanto Andrade</title>
+  <style>
+    :root {
+      --primary-green: #5D4037;
+      --secondary-green: #4CAF50;
+      --light-green: #A5D6A7;
+      --primary-brown: #2E7D32;
+      --secondary-brown: #8D6E63;
+      --light-brown: #fffdd9;
+      --white: #FFFFFF;
+      --black: #212121;
+      --gray: #757575;
+      --light-gray: #F5F5F5;
+    }
+    
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light-gray);
+      color: var(--black);
+      line-height: 1.6;
+    }
+    
+    /* Header e Navegação */
+    header {
+      background-color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      width: auto;
+      max-height: 80px; 
+    }
+    
+    .menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .menu li {
+      margin-left: 1.5rem;
+    }
+    
+    .menu a {
+      color: green;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .menu a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: green;
+      transition: width 0.3s ease-out;
+    }
+    
+    .menu a:hover::before {
+      width: 100%;
+    }
+    
+    .reserva-btn {
+      background-color: var(--primary-brown);
+      color: var(--white);
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .reserva-btn:hover {
+      background-color: var(--secondary-green);
+    }
+    
+    /* Banner da FAQ */
+    .faq-banner {
+      height: 40vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/piscina.jpeg') no-repeat top right;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      margin-top: 80px;
+    }
+    
+    .faq-banner h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Seção de FAQ */
+    .faq-section {
+      background-color: var(--white);
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-green);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background-color: var(--primary-brown);
+    }
+    
+    .faq-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--light-brown);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--primary-green);
+      transition: background-color 0.3s;
+    }
+    
+    .faq-question:hover {
+      background-color: rgba(165, 214, 167, 0.3);
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+    
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+      border-top: 0px solid var(--light-green);
+    }
+    
+    .faq-item.active .faq-question {
+      background-color: var(--light-green);
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 1.5rem;
+      border-top: 1px solid var(--light-green);
+    }
+    
+    .contact-cta {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: var(--light-green);
+      border-radius: 8px;
+    }
+    
+    .contact-cta h3 {
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-cta .hero-btn {
+      background-color: var(--primary-brown);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    
+    .contact-cta .hero-btn:hover {
+      background-color: var(--secondary-green);
+    }
+    
+    /* Seção de mapa de categorias */
+    .faq-categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .category-btn {
+      padding: 0.8rem 1.5rem;
+      background-color: var(--light-green);
+      color: var(--primary-green);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .category-btn:hover,
+    .category-btn.active {
+      background-color: var(--primary-brown);
+      color: var(--white);
+    }
+    
+    /* Footer - mesmo do template original */
+    footer {
+      background-color: var(--primary-brown);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+      height: 60px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--light-green);
+    }
+    
+    .contact-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 1.5rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--secondary-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: rgb(255, 255, 255);
+      color: var(--primary-brown);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    #zap {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all ease 0.2s;
+    }
+    
+    #zap:hover {
+      width: 65px;
+      height: 65px;
+      transition: all ease 0.2s;
+    }
+    .menu-mobile-icon {
+      display: none;
+  font-size: 1.8rem;
+  color: var(--primary-brown);
+  cursor: pointer;
+  position: relative;}
+
+.menu-mobile {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 70px; /* Posiciona abaixo do cabeçalho */
+  right: 0;
+  width: 250px;
+  background-color: var(--primary-brown); /* Fundo verde */
+  z-index: 2000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.menu-mobile.active {
+  display: block;
+}
+
+.menu-mobile-close {
+  display: none; 
+}
+
+.menu-mobile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-mobile-links li {
+  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu-mobile-links a {
+  color: var(--white); /* Texto branco */
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: block;
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+}
+
+.menu-mobile-links a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+.menu-mobile-links li:last-child {
+  border-bottom: none;
+}
+    /* Responsividade */
+@media (max-width: 768px) {
+  .reserva-btn {
+    display: none;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    order: 1; /* Coloca a logo primeiro (esquerda) */
+  }
+      .logo-img {
+        width: auto;
+        max-height: 50px;  /* Tamanho ajustado para mobile */
+      }
+      .menu-mobile-icon {
+        display: block;
+  }
+      .menu {
+        display: none;
+      }
+      
+  
+  .gallery-title h1 {
+    font-size: 1.6rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .footer-column {
+    flex: 100%;
+  }
+  
+  .gallery-slider {
+    max-width: 95%;
+    height: 300px;
+  }
+  
+  .slides {
+    height: 300px;
+  }
+  
+  .slide-caption h3 {
+    font-size: 1.2rem;
+  }
+  
+  .slide-caption p {
+    font-size: 0.9rem;
+  }
+  
+  .slide-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header com menu -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <img src="imagens/logo.png" alt="logo" class="logo-img">
+        </a>
+        <ul class="menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#quem-somos">Sobre Nós</a></li>
+          <li><a href="#hospedagens">Nossas Instalações</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="perguntas-frequentes.html">FAQ</a></li>
+        </ul>
+        <div class="menu-mobile-icon">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu-mobile">
+          <ul class="menu-mobile-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#quem-somos">Sobre Nós</a></li>
+            <li><a href="#hospedagens">Nossas Instalações</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="perguntas-frequentes.html">FAQ</a></li>
+            <li><a href="https://wa.me/5514981111872" target="_blank">Faça sua Reserva</a></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5514981111872" target="_blank" class="reserva-btn-container"><button class="reserva-btn">Faça sua Reserva</button></a>
+        
+      </nav>
+      
+      <!-- Adicione isso fora da tag nav, mas ainda dentro do header -->
+      
+      
+    </div>
+  </header>
+  
+
+  <!-- Banner da FAQ -->
+  <section class="faq-banner">
+    <div class="hero-content">
+      <h1>Perguntas Frequentes</h1>
+      <p>Tire suas dúvidas sobre o Recanto Andrade</p>
+    </div>
+  </section>
+
+  <!-- Seção Principal FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Como podemos ajudar?</h2>
+        <p>Encontre respostas para as perguntas mais comuns sobre nossa acomodação</p>
+      </div>
+      
+      <!-- Categorias da FAQ -->
+      <div class="faq-categories">
+        <button class="category-btn active" data-category="all">Todas</button>
+        <button class="category-btn" data-category="reservas">Reservas</button>
+        <button class="category-btn" data-category="hospedagem">Hospedagem</button>
+        <button class="category-btn" data-category="instalacoes">Instalações</button>
+        <button class="category-btn" data-category="pagamento">Pagamentos</button>
+      </div>
+      
+      <!-- Container de perguntas e respostas -->
+      <div class="faq-container">
+        <!-- Categoria: Reservas -->
+        <div class="faq-item" data-category="reservas">
+          <div class="faq-question">
+            Como faço para reservar o espaço?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Para fazer sua reserva, entre em contato pelo WhatsApp (14) 98111-1872 ou pelos telefones (14) 99714-9114 e (14) 99897-0101. Nossa equipe verificará a disponibilidade na data desejada e informará sobre os procedimentos para confirmação.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="reservas">
+          <div class="faq-question">
+            Com quanto tempo de antecedência devo fazer minha reserva?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Recomendamos que as reservas sejam feitas com pelo menos 30 dias de antecedência, especialmente para finais de semana e feriados. Entretanto, sempre vale a pena verificar a disponibilidade mesmo com menos antecedência.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="reservas">
+          <div class="faq-question">
+            Qual é a política de cancelamento?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Em caso de cancelamento, aplicamos as seguintes condições:</p>
+            <ul>
+              <li>Cancelamentos com mais de 30 dias de antecedência: reembolso de 90% do valor pago</li>
+              <li>Entre 15 e 29 dias: reembolso de 50% do valor pago</li>
+              <li>Menos de 15 dias: não há reembolso</li>
+            </ul>
+            <p>Em casos de emergência comprovada, podemos oferecer remarcação para outra data, sujeita à disponibilidade.</p>
+          </div>
+        </div>
+        
+        <!-- Categoria: Hospedagem -->
+        <div class="faq-item" data-category="hospedagem">
+          <div class="faq-question">
+            Qual é o horário de check-in e check-out?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>O check-in é realizado a partir das 14h e o check-out até as 12h. Caso precise de horários especiais, entre em contato conosco com antecedência para verificarmos a possibilidade de atendê-lo.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="hospedagem">
+          <div class="faq-question">
+            Qual é a capacidade máxima do espaço?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>O Recanto Andrade comporta confortavelmente até 15 pessoas para hospedagem. Para eventos diurnos sem pernoite, podemos acomodar até 25 pessoas. Por favor, respeite a capacidade máxima para garantir o conforto e segurança de todos.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="hospedagem">
+          <div class="faq-question">
+            É permitido levar animais de estimação?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Sim, aceitamos animais de estimação de pequeno e médio porte. Pedimos apenas que os donos sejam responsáveis pela limpeza e pelo comportamento dos pets, garantindo que não causem danos às instalações ou incômodo a outros hóspedes.</p>
+          </div>
+        </div>
+        
+        <!-- Categoria: Instalações -->
+        <div class="faq-item" data-category="instalacoes">
+          <div class="faq-question">
+            A piscina é aquecida?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Não, nossa piscina não é aquecida. É uma piscina tradicional que fica mais agradável nos dias quentes.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="instalacoes">
+          <div class="faq-question">
+            O que está incluso na cozinha?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Nossa cozinha é completa e inclui geladeira, fogão, micro-ondas, liquidificador, sanduicheira, utensílios de cozinha, panelas, talheres, pratos, copos e xícaras para até 15 pessoas. Oferecemos também churrasqueira com utensílios para churrasco.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="instalacoes">
+          <div class="faq-question">
+            Tem Wi-Fi disponível?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Sim, oferecemos Wi-Fi gratuito em toda a propriedade. A senha será fornecida no momento do check-in.</p>
+          </div>
+        </div>
+        
+        <!-- Categoria: Pagamentos -->
+        <div class="faq-item" data-category="pagamento">
+          <div class="faq-question">
+            Quais formas de pagamento são aceitas?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Aceitamos as seguintes formas de pagamento:</p>
+            <ul>
+              <li>Pix</li>
+              <li>Transferência bancária</li>
+              <li>Cartões de crédito em até 2x sem juros</li>
+              <li>Dinheiro</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="pagamento">
+          <div class="faq-question">
+            É necessário pagar algum valor como garantia?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Sim, solicitamos um caução de R$ 300,00 no momento do check-in, que será devolvido no check-out após verificação das instalações. Este valor serve como garantia para eventuais danos ou itens quebrados durante a estadia.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" data-category="pagamento">
+          <div class="faq-question">
+            Qual é a política de pagamento antecipado?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Para confirmar sua reserva, solicitamos o pagamento de 50% do valor total no momento da reserva. O restante pode ser pago até 7 dias antes da data de check-in ou em dinheiro no momento da chegada.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA de contato -->
+      <div class="contact-cta">
+        <h3>Não encontrou o que procurava?</h3>
+        <p>Entre em contato conosco diretamente e teremos prazer em responder a todas as suas perguntas.</p>
+        <a href="https://wa.me/5514981111872" class="hero-btn" target="_blank">Fale Conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-title">Nossos Contatos</h3>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>
+              <p>14 99714-9114</p>
+              <p>(14) 98111-1872</p>
+              <p>(14) 99897-0101</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <p>andre.s.andrade@hotmail.com</p>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Links Rápidos</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem;"><a href="index.html#inicio" style="color: var(--light-green); text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="index.html#quem-somos" style="color: var(--light-green); text-decoration: none;">Sobre Nós</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="index.html#hospedagens" style="color: var(--light-green); text-decoration: none;">Nossas Instalações</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="index.html#localizacao" style="color: var(--light-green); text-decoration: none;">Localização</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="faq.html" style="color: var(--light-green); text-decoration: none;">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">Siga a gente nas redes sociais</h3>
+          <p>Acompanhe nossas redes sociais e fique por dentro das novidades, promoções e eventos especiais.</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/espacoo.andradee_/#" class="social-icon" target="_blank">IG</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Recanto Andrade. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <a href="https://wa.me/5514997149114" class="whatsapp-button" target="_blank">
+    <i class="fab fa-whatsapp" id="zap"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Script para o FAQ (expandir/contrair)
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+    
+    // Script para filtrar por categoria
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove classe active de todos os botões
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Adiciona classe active ao botão clicado
+        button.classList.add('active');
+        
+        const category = button.getAttribute('data-category');
+        
+        // Filtra os itens da FAQ
+        faqItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+    // Script para o menu mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const menuIcon = document.querySelector('.menu-mobile-icon');
+  const menuMobile = document.querySelector('.menu-mobile');
+  
+  // Toggle do menu ao clicar no ícone
+  if (menuIcon && menuMobile) {
+    menuIcon.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menuMobile.classList.toggle('active');
+      
+      // Alternar ícone (opcional)
+      const iconElement = menuIcon.querySelector('i');
+      if (iconElement) {
+        if (menuMobile.classList.contains('active')) {
+          iconElement.classList.remove('fa-bars');
+          iconElement.classList.add('fa-times');
+        } else {
+          iconElement.classList.remove('fa-times');
+          iconElement.classList.add('fa-bars');
+        }
+      }
+    });
+  }
+  
+  // Fechar o menu ao clicar em um link
+  const menuLinks = document.querySelectorAll('.menu-mobile-links a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuMobile.classList.remove('active');
+      
+      // Restaurar ícone (opcional)
+      const iconElement = menuIcon.querySelector('i');
+      if (iconElement) {
+        iconElement.classList.remove('fa-times');
+        iconElement.classList.add('fa-bars');
+      }
+    });
+  });
+  
+  // Fechar o menu ao clicar fora dele
+  document.addEventListener('click', function(e) {
+    if (menuMobile && menuMobile.classList.contains('active')) {
+      if (!menuMobile.contains(e.target) && e.target !== menuIcon) {
+        menuMobile.classList.remove('active');
+        
+        // Restaurar ícone (opcional)
+        const iconElement = menuIcon.querySelector('i');
+        if (iconElement) {
+          iconElement.classList.remove('fa-times');
+          iconElement.classList.add('fa-bars');
+        }
+      }
+    }
+  });
+});
+  </script>
+</body>
+</html>
