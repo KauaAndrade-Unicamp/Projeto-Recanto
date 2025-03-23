@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
   <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
   <title>Galeria - Recanto Andrade</title>
   <style>
@@ -830,7 +832,9 @@
     slideIndex = slideIndex < dots.length - 1 ? slideIndex + 1 : 0;
     showSlide(slideIndex);
   });
-  
+  document.addEventListener('dblclick', function(event) {
+    event.preventDefault();
+});
   // Event listeners para os dots
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
