@@ -251,28 +251,30 @@
     /* Seção de mapa de categorias */
     .faq-categories {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
     }
     
     .category-btn {
       padding: 0.8rem 1.5rem;
-      background-color: var(--light-green);
-      color: var(--primary-green);
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.3s;
+  background-color: var(--light-green);
+  color: var(--primary-green);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  min-width: 120px;  /* Largura mínima fixa para todos os botões */
+  text-align: center; /* Centraliza o texto */
     }
     
     .category-btn:hover,
-    .category-btn.active {
-      background-color: var(--primary-brown);
-      color: var(--white);
-    }
+.category-btn.active {
+  background-color: var(--primary-brown);
+  color: var(--white);
+}
     
     /* Footer - mesmo do template original */
     footer {
@@ -442,7 +444,18 @@
     justify-content: space-between;
     align-items: center;
   }
+  .faq-categories {
+    flex-direction: column; /* Alinha os botões verticalmente */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    gap: 0.8rem; /* Reduz o espaçamento entre botões */
+  }
   
+  .category-btn {
+    min-width: 80%; /* Define a largura como percentual da largura do container */
+    width: 80%; /* Assegura que todos os botões tenham a mesma largura */
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
   .logo {
     order: 1; /* Coloca a logo primeiro (esquerda) */
   }
@@ -505,26 +518,28 @@
           <img src="imagens/logo.png" alt="logo" class="logo-img">
         </a>
         <ul class="menu">
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#quem-somos">Sobre Nós</a></li>
-          <li><a href="#hospedagens">Nossas Instalações</a></li>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="index.html#quem-somos">Sobre Nós</a></li>
+          <li><a href="index.html#hospedagens">Nossas Instalações</a></li>
           <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="#localizacao">Localização</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="index.html#localizacao">Localização</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
           <li><a href="perguntas-frequentes.html">FAQ</a></li>
+          
         </ul>
         <div class="menu-mobile-icon">
           <i class="fas fa-bars"></i>
         </div>
         <div class="menu-mobile">
           <ul class="menu-mobile-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#quem-somos">Sobre Nós</a></li>
-            <li><a href="#hospedagens">Nossas Instalações</a></li>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#quem-somos">Sobre Nós</a></li>
+            <li><a href="index.html#hospedagens">Nossas Instalações</a></li>
             <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="#localizacao">Localização</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="index.html#localizacao">Localização</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
             <li><a href="perguntas-frequentes.html">FAQ</a></li>
+            
             <li><a href="https://wa.me/5514981111872" target="_blank">Faça sua Reserva</a></li>
           </ul>
         </div>
